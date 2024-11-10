@@ -84,13 +84,13 @@ const router = createBrowserRouter([
   },
   {
     element: <RootLayout children={<Outlet />} />,
-    loader: () => {
-      const PIN = prompt(
-        'You need a password to have permission to process this page'
-      );
-      if (PIN === import.meta.env.VITE_PIN) return null;
-      return redirect('/categories');
-    },
+    // loader: () => {
+    //   const PIN = prompt(
+    //     'You need a password to have permission to process this page'
+    //   );
+    //   if (PIN === import.meta.env.VITE_PIN) return null;
+    //   return redirect('/categories');
+    // },
     children: [
       {
         path: '/item-management',

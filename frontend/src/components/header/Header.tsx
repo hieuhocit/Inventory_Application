@@ -9,7 +9,7 @@ import { IoMdSunny } from 'react-icons/io';
 import { CiSearch } from 'react-icons/ci';
 
 import { toggleMode } from '@/store/theme/themeSlice';
-import { Form, Link, useSearchParams } from 'react-router-dom';
+import { Form, Link } from 'react-router-dom';
 import { IItem } from '@/types/definitions';
 import { getItemsByName } from '@/utils/apis';
 import { AiOutlineLoading3Quarters } from 'react-icons/ai';
@@ -18,8 +18,7 @@ export default function Header() {
   const [searchResults, setSearchResults] = useState<IItem[] | null>(null);
   const [showSearchResults, setShowSearchResults] = useState(false);
   const [loading, setLoading] = useState(false);
-
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [query, setQuery] = useState('');
 
   const searchContainer = useRef<HTMLDivElement | null>(null);
   const idTimeoutRef = useRef<number | null>(null);
@@ -27,8 +26,6 @@ export default function Header() {
   const mode = useSelector(themeMode);
   const dispatch = useDispatch();
   const isDark = mode === 'dark';
-
-  const query = (searchParams.get('query') as string)?.trim() ?? '';
 
   useEffect(() => {
     async function loadData(query: string) {
@@ -64,8 +61,7 @@ export default function Header() {
   function handleOnChange(e: React.ChangeEvent<HTMLInputElement>) {
     e.preventDefault();
     const query = e.target.value;
-
-    setSearchParams({ query: query }, { replace: true });
+    setQuery(query);
     setShowSearchResults(true);
   }
 
@@ -116,7 +112,10 @@ export default function Header() {
                 searchResults &&
                 searchResults.map((item) => (
                   <Link
-                    onClick={() => setShowSearchResults(false)}
+                    onClick={() => {
+                      setQuery('');
+                      setShowSearchResults(false);
+                    }}
                     key={item.id}
                     to={`/categories/${item.category_id}/items/${item.id}`}
                     className={styles.item}
