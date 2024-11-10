@@ -1,11 +1,15 @@
-import { useLoaderData, useNavigate } from 'react-router-dom';
+import {
+  LoaderFunctionArgs,
+  useLoaderData,
+  useNavigate,
+} from 'react-router-dom';
 import Modal from '../modal/Modal';
 import CategoryForm from './CategoryForm';
 import { getCategoryById } from '@/utils/apis';
 import { ICategory } from '@/types/definitions';
 
-export async function loader({ params }) {
-  return getCategoryById(params.categoryId);
+export async function loader({ params }: LoaderFunctionArgs) {
+  return getCategoryById(params.categoryId as string);
 }
 
 export default function ViewCategory() {

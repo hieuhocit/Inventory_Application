@@ -1,10 +1,10 @@
-import { useLoaderData } from 'react-router-dom';
+import { LoaderFunctionArgs, useLoaderData } from 'react-router-dom';
 import styles from './ItemDetails.module.scss';
 import { getItemById } from '@/utils/apis';
 import { IItem } from '@/types/definitions';
 
-export async function loader({ params }) {
-  return getItemById(params.itemId);
+export async function loader({ params }: LoaderFunctionArgs) {
+  return getItemById(params.itemId as string);
 }
 
 export default function ItemDetailsPage() {

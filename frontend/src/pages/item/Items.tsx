@@ -1,9 +1,9 @@
-import { Link, useLoaderData } from 'react-router-dom';
+import { Link, LoaderFunctionArgs, useLoaderData } from 'react-router-dom';
 import styles from './Items.module.scss';
 import { getCategoryById, getItemsByCategoryId } from '@/utils/apis';
 import { ICategory, IItem } from '@/types/definitions';
 
-export async function loader({ params }) {
+export async function loader({ params }: LoaderFunctionArgs) {
   const { categoryId } = params;
   const [category, items] = await Promise.all([
     getCategoryById(categoryId as string),
