@@ -1,0 +1,137 @@
+$background-light: white;
+$color-light: black;
+$background-dark: #25293c;
+$color-dark: white;
+$primary-color: rgb(255, 127, 80);
+$background-color-hover: rgba(0, 0, 0, 0.1);
+$background-color-hover-dark: rgba(255, 255, 255, 0.1);
+.management {
+  padding: 16px;
+
+  .head {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 32px;
+    h1 {
+      font-size: 2rem;
+    }
+
+    button {
+      border: none;
+      outline: none;
+      padding: 12px 24px;
+      font-size: 1.15rem;
+      border-radius: 6px;
+      color: white;
+      background-color: $background-dark;
+      cursor: pointer;
+      transition: background-color 0.2s ease-in-out;
+      &:hover {
+        background-color: hsl(230, 24%, 40%);
+      }
+    }
+  }
+
+  .body {
+    border-radius: 12px;
+    padding: 16px;
+    background-color: rgba(0, 0, 0, 0.05);
+
+    table,
+    th,
+    td {
+      border: none;
+      padding: 6px 12px;
+    }
+    table {
+      width: 100%;
+      border-spacing: 0 16px;
+
+      th {
+        font-size: 1.3rem;
+        text-align: left;
+      }
+
+      tbody {
+        tr {
+          &:hover {
+            background-color: $background-color-hover;
+          }
+        }
+
+        td {
+          text-align: left;
+          font-size: 1.2rem;
+
+          &:nth-child(1) {
+            max-width: 80px;
+          }
+
+          &:nth-child(3) {
+            max-width: 300px;
+          }
+
+          max-width: 200px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+
+          &.borderRadiusLeft {
+            border-top-left-radius: 8px;
+            border-bottom-left-radius: 8px;
+          }
+
+          &.borderRadiusRight {
+            border-top-right-radius: 8px;
+            border-bottom-right-radius: 8px;
+          }
+
+          .imageContainer {
+            width: 50px;
+            height: 50px;
+            border-radius: 8px;
+            overflow: hidden;
+            img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+              object-position: center;
+            }
+          }
+
+          .action {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+
+            .icon {
+              font-size: 1.3rem;
+              cursor: pointer;
+              transition: transform 0.2s ease-in-out;
+              padding: 4px 6px;
+
+              &:hover,
+              &:active {
+                transform: scale(1.15);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &.dark {
+    .body {
+      table {
+        tbody {
+          tr {
+            &:hover {
+              background-color: $background-color-hover-dark;
+            }
+          }
+        }
+      }
+    }
+  }
+}

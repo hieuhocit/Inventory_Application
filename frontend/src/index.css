@@ -1,0 +1,50 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  border: none;
+  outline: none;
+}
+
+aside {
+  width: 300px;
+}
+
+header,
+main {
+  margin-left: 300px;
+}
+
+main {
+  width: calc(100% - 300px);
+  min-height: calc(100vh - 80px);
+  padding-bottom: 32px;
+}
+
+main.light {
+  color: black;
+}
+
+main.dark {
+  color: white;
+  background-color: #434861;
+
+  a {
+    color: white !important;
+  }
+}
+
+#nprogress .spinner[role='spinner'] {
+  display: none;
+}
